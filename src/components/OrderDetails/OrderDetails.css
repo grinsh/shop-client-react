@@ -1,0 +1,14 @@
+/* h1{
+    color:green;
+} */
+
+*{
+    text-align: center;
+}
+.card{
+    background-color: #f0f0f0;
+    border-radius: 10%;
+    padding:10%;
+    max-width:50%;
+    margin:auto;
+}
