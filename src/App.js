@@ -9,6 +9,9 @@ import UserPage from './components/UserPage/UserPage';
 import UserStatistics from './components/UserStatiatic/UserStatistics';
 import UserOrders from './components/UserOrders/UserOrders';
 import UserProfile from './components/UserProfile/UserProfile';
+import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
 function App() {

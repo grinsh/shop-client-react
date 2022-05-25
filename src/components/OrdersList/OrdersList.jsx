@@ -63,21 +63,36 @@ export default function OrdersList() {
 
     }
 
-    const sortByComplete=()=>{
+    const sortByComplete = () => {
         const modifiedSearchArr = [...searchResultOrders]
-        const sortedArr = modifiedSearchArr.sort((a,b)=>{ return b.id-a.id});
+        const sortedArr = modifiedSearchArr.sort((a, b) => { return b.id - a.id });
         setSearchResultOrders([...sortedArr]);
     }
     return (
-        <>
-            <h1>Orders List</h1>
+        <div className="col-6 m-auto">
+        
+            <h1>הזמנות שמורות</h1>
             <input type="search" placeholder="הכנס קוד הזמנה"
-                onChange={(e) => { searchOrder(e.target.value) }} />
-                <button onClick={sortByComplete}>מיין לפי הזמנות שהושלמו</button>
-            {
-                searchResultOrders.map((o) => <p key={o.id}>{o.id}  |  {o.arrivalDate.toDateString()}  |  {o.address}  |  {o.complete ? 'V' : '?'}</p>)
-                // orders.map(o => <OrderDetails />)
-            }
-        </>
+                onChange={(e) => { searchOrder(e.target.value) }}  className="form-control" />
+            <button onClick={sortByComplete} className="btn btn-default">מיין לפי הזמנות שהושלמו</button>
+        
+
+            <div class="accordion" id="accordionExample">
+                {
+                    searchResultOrders.map(o =>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={'#item' + o.id} aria-expanded="false" aria-controls={'item' + o.id}>
+                                    {o.id}  |  {o.arrivalDate.toDateString()}  |  {o.address}       </button>
+                            </h2>
+                            <div id={'item' + o.id} class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    פרטי הזמנה
+                                </div>
+                            </div>
+                        </div>)
+                }
+            </div>
+        </div>
     )
 }

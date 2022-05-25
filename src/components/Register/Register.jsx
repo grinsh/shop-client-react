@@ -3,7 +3,7 @@ import "./Register.css"
 
 export default function Register() {
 
-const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const formData = {
         username: "",
@@ -18,7 +18,7 @@ const navigate = useNavigate();
 
     const register = (event) => {
 
-        
+
         event.preventDefault();
 
         //שליפת המידע הקיים בטופס
@@ -27,13 +27,13 @@ const navigate = useNavigate();
         formData.email = form.email.value;
         formData.password = form.password.value;
 
-        if(!checkPassword(formData.password))
-        alert("סיסמא לא תקינה")
+        if (!checkPassword(formData.password))
+            alert("סיסמא לא תקינה")
         //supposed to send formData to server
         alert(`User ${formData.username} has registered.`)
         console.log(formData);
 
-        if(true){
+        if (true) {
             navigate("/user-page");
         }
     }
@@ -42,19 +42,24 @@ const navigate = useNavigate();
         return password.length > 6;
     }
     return (
-        <>
-            <h1>Register</h1>
-            {/* <form>
-                <input type="text" placeholder="הכנס שם משתמש" onChange={(e) => { onChange(e,"username")}} />
-                <input type="email" placeholder="הכנס כתובת מייל" onChange={(e) => { onChange(e,"email")}} />
-                <input type="password" placeholder="הכנס סיסמא" onChange={(e) => { onChange(e,"password")}} />
-                <button onClick={(event) => { register(event) }}>צור חשבון</button>
-            </form> */}
-            <form onSubmit={(event) => { register(event) }}>
-                <input type="text" name="username" placeholder="הכנס שם משתמש"  />
-                <input type="email" name="email" placeholder="הכנס כתובת מייל" />
-                <input type="password" name="password" placeholder="הכנס סיסמא" />
-                <button type="submit">צור חשבון</button>
+        <>      
+            <form className="col-4 m-auto card p-4 mt-4" onSubmit={(event) => { register(event) }}>
+                <h1>התחברות</h1>
+                <div className="mb-3">
+                    <label for="exampleInputPassword1" className="form-label">שם משתמש</label>
+                    <input type="text" className="form-control" id="exampleInputPassword1" name="username" placeholder="הכנס שם משתמש" />
+                </div>
+                <div className="mb-3">
+                    <label for="exampleInputEmail1" className="form-label">כתובת אימייל</label>
+                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="הכנס כתובת מייל" />
+                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div className="mb-3">
+                    <label for="exampleInputPassword1" className="form-label">סיסמא</label>
+                    <input type="password" className="form-control" id="exampleInputPassword1" name="password" placeholder="הכנס סיסמא" />
+                </div>
+
+                <button type="submit" className="btn btn-primary">צור חשבון</button>
             </form>
         </>
     )
