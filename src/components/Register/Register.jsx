@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import "./Register.css"
 
 export default function Register() {
+
+const navigate = useNavigate();
 
     const formData = {
         username: "",
@@ -14,6 +17,8 @@ export default function Register() {
     // }
 
     const register = (event) => {
+
+        
         event.preventDefault();
 
         //שליפת המידע הקיים בטופס
@@ -27,6 +32,10 @@ export default function Register() {
         //supposed to send formData to server
         alert(`User ${formData.username} has registered.`)
         console.log(formData);
+
+        if(true){
+            navigate("/user-page");
+        }
     }
 
     const checkPassword = (password) => {
