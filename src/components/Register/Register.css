@@ -7,4 +7,6 @@ form{
 }
 input{
     margin:6%;
+    padding:6%;
+    border-radius: 5px;
 }
